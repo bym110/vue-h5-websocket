@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>用户名icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M14.8333649,7.57895243 C14.8333649,5.47940886 13.1546497,3.77777778 11.0833808,3.77777778 C9.01201692,3.77777778 7.33339656,5.47940886 7.33339656,7.57895243 C7.33339656,8.99697833 8.10095826,10.2323433 9.23764762,10.8856927 C6.40754245,11.6993031 4.33333333,14.3320244 4.33333333,17.4620642 C4.33333333,17.8807424 4.66879184,18.2222222 5.08334914,18.2222222 L17.0767734,18.2222222 C17.4971161,18.2222222 17.8333333,17.8807424 17.8333333,17.4620642 C17.8333333,14.3320244 15.7583655,11.6993031 12.929019,10.8856927 C14.0650445,10.2323433 14.8333649,8.99697833 14.8333649,7.57895243 Z" id="path-1"></path>
+    </defs>
+    <g id="移动营销客服端—app" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="登录页" transform="translate(-34.000000, -326.000000)">
+            <g id="login/ic_user" transform="translate(34.000000, 326.000000)">
+                <rect id="Rectangle-3" x="1" y="1" width="20" height="20"></rect>
+                <g id="Fill-1">
+                    <use fill="#FFFFFF" xlink:href="#path-1"></use>
+                    <use fill="#B6BACD" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

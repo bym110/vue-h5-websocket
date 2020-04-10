@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="375px" height="308px" viewBox="0 0 375 308" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>矩形 + 矩形 Mask</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,0 L375,0 L375,307.756425 L187.564953,307.756425 C187.521651,307.756425 187.478349,307.756454 187.435047,307.75651 L0,308 L0,0 Z" id="path-1"></path>
+        <linearGradient x1="77.3893028%" y1="100%" x2="77.3893028%" y2="62.5946414%" id="linearGradient-3">
+            <stop stop-color="#636575" offset="0%"></stop>
+            <stop stop-color="#D8D8D8" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="100%" x2="65.5812288%" y2="54.3834678%" id="linearGradient-4">
+            <stop stop-color="#636575" offset="0%"></stop>
+            <stop stop-color="#D8D8D8" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="移动营销客服端—app" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="我的—默认头像">
+            <g id="矩形-+-矩形-Mask">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#494B57" xlink:href="#path-1"></use>
+                <rect id="矩形" fill="url(#linearGradient-3)" opacity="0.26333585" mask="url(#mask-2)" transform="translate(336.903811, -26.880799) rotate(60.000000) translate(-336.903811, 26.880799) " x="210.903811" y="-176.880799" width="252" height="300" rx="53"></rect>
+                <rect id="矩形" fill="url(#linearGradient-4)" opacity="0.26333585" mask="url(#mask-2)" transform="translate(73.119201, 349.903811) rotate(150.000000) translate(-73.119201, -349.903811) " x="-52.8807991" y="199.903811" width="252" height="300" rx="53"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
