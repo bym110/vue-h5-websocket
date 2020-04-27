@@ -11,14 +11,12 @@
     "crypto": "^1.0.1",
     "debug": "~2.6.9",
     "express": "~4.16.1",
-    "express-ws": "^4.0.0",
     "formidable": "^1.2.2",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
-    "nodejs-websocket": "^1.7.2",
-    "ws": "^7.2.5"
+    "nodejs-websocket": "^1.7.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
