@@ -1,7 +1,7 @@
 {
-  "name": "pc-client-mobile",
+  "name": "client-mobile-chat",
   "version": "1.0.0",
-  "description": "pc-client-mobile",
+  "description": "client-mobile-chat",
   "author": "bym",
   "private": true,
   "scripts": {

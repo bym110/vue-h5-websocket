@@ -1,6 +1,6 @@
-# pc-client-mobile
+# client-mobile-chat
 
-> pc-client-mobile
+> client-mobile-chat
 
 ## Build Setup
 
