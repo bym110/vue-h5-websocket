@@ -431,15 +431,12 @@
           sendMessage() { // 发送消息
               try {
                   this.stopEvent()
-                  let date = new Date().getTime();
                   let messageObj ={
-                      reqId:date,
-                      direction:'0',
+                      direction:0,
                       contentType:1,
                       chatContent:this.message,
-                      targetType:1,
                   };
-                  //this.$store.commit('websocketSend',messageObj);
+                  this.$store.commit('websocketSend',messageObj);
                   this.$store.commit('updateMessage',messageObj);
               } catch (e) {
                   //micro_customer_service_app_object.onPrintLog('发送信息错误',e)
@@ -481,8 +478,10 @@
           },
           scrollToBottom() { // 滚动到底部
               this.$nextTick(() => {
+                if (this.$refs.message) {
                   let container = this.$refs.message.$el;
                   container.scrollTop = container.scrollHeight;
+                }
               });
           },
           scrollToSite() { // 滚动到指定位置

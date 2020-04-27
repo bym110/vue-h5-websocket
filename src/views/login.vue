@@ -5,19 +5,13 @@
     </div>
     <div class="loginTitle">登录</div>
     <group class="loginForm" style="float:left;">
-      <x-input ref="companyCode" type="text" @on-focus="handleFocus(1)" @on-blur="handleBlur(1)" @on-change="handleChage(1)" v-model="loginForm.companyCode" :show-clear="false" :should-toast-error="false" placeholder="请输入企业标识码">
-        <img slot="label" :src="icon.companyCode" alt="">
-        <div slot="right" v-if="showClearCompanyCode">
-          <icon type="clear" @click.native="handleClear(1)"></icon>
-        </div>
-      </x-input>
-      <x-input ref="loginName" type="text" @on-focus="handleFocus(2)" @on-blur="handleBlur(2)" @on-change="handleChage(2)" v-model="loginForm.loginName" :show-clear="false" :should-toast-error="false" placeholder="请输入用户名">
+      <x-input ref="loginName" type="text" @on-focus="handleFocus(1)" @on-blur="handleBlur(1)" @on-change="handleChage(1)" v-model="loginForm.loginName" :show-clear="false" :should-toast-error="false" placeholder="请输入用户名">
         <img slot="label" :src="icon.userName" alt="">
         <div slot="right" v-if="showClearLoginName">
           <icon type="clear" @click.native="handleClear(2)"></icon>
         </div>
       </x-input>
-      <x-input ref="loginPass" type="password" @on-focus="handleFocus(3)" @on-blur="handleBlur(3)" @on-change="handleChage(3)" v-model="loginForm.loginPass" :show-clear="false" :should-toast-error="false" placeholder="请输入登录密码">
+      <x-input ref="loginPass" type="password" @on-focus="handleFocus(2)" @on-blur="handleBlur(2)" @on-change="handleChage(2)" v-model="loginForm.loginPass" :show-clear="false" :should-toast-error="false" placeholder="请输入登录密码">
         <img slot="label" :src="icon.password" alt="">
         <div slot="right" v-if="showClearLoginPass">
           <icon type="clear" @click.native="handleClear(3)"></icon>
@@ -27,52 +21,73 @@
     </group>
     <div class="submitBtn">
       <x-button @click.native="loginSubmit" style="border-radius: 99px;" type="primary">立即登录</x-button>
+      <a class="register" href="javascript:;" @click="showRegister=true">注册</a>
     </div>
     <loading :show="showLoading" text="loading"></loading>
+    <div v-transfer-dom>
+      <x-dialog v-model="showRegister" hide-on-blur class="dialog-demo">
+        <div style="padding:15px;">
+          <div>
+            <x-input ref="loginName" type="text" @on-focus="handleFocus(1)" @on-blur="handleBlur(1)" @on-change="handleChage(1)" v-model="loginForm.loginName" :show-clear="false" :should-toast-error="false" placeholder="请输入用户名">
+              <img slot="label" :src="icon.userName" alt="">
+              <div slot="right" v-if="showClearLoginName">
+                <icon type="clear" @click.native="handleClear(2)"></icon>
+              </div>
+            </x-input>
+            <x-input ref="loginPass" type="password" @on-focus="handleFocus(2)" @on-blur="handleBlur(2)" @on-change="handleChage(2)" v-model="loginForm.loginPass" :show-clear="false" :should-toast-error="false" placeholder="请输入登录密码">
+              <img slot="label" :src="icon.password" alt="">
+              <div slot="right" v-if="showClearLoginPass">
+                <icon type="clear" @click.native="handleClear(3)"></icon>
+              </div>
+            </x-input>
+            <div style="color: red;padding-left: 15px;text-align: left" v-if="showError">{{ errorTip }}</div>
+            <x-button @click.native="register" style="border-radius: 99px;margin-top: 2em;" type="primary">立即注册</x-button>
+          </div>
+        </div>
+
+      </x-dialog>
+    </div>
   </view-box>
 </template>
 
 <script>
-  import { ViewBox,XInput,Group,XButton,Loading,Icon } from 'vux'
+  import { ViewBox,XInput,Group,XButton,Loading,Icon,XDialog,TransferDomDirective as TransferDom } from 'vux'
     export default {
         name: "login",
+        directives: {
+          TransferDom
+        },
         components: {
           XInput,
           Group,
           XButton,
           ViewBox,
           Loading,
-          Icon
+          Icon,
+          XDialog
         },
       data() {
           return {
-              loginForm:{
-                companyCode:'',
-                loginName:'',
-                loginPass:''
-              },
-              showLoading:false,
-              errorTip:'',
-              showError:false,
-              showClearCompanyCode:false,
-              showClearLoginName:false,
-              showClearLoginPass:false
+            loginForm:{
+              loginName:'',
+              loginPass:''
+            },
+            showLoading:false,
+            errorTip:'',
+            showError:false,
+            showClearLoginName:false,
+            showClearLoginPass:false,
+            showRegister:false
           }
       },
       methods:{
         handleFocus(n) {
             if (n === 1) {
-                if (this.loginForm.companyCode) {
-                    this.showClearCompanyCode = true
-                } else {
-                    this.showClearCompanyCode = false
-                }
-            } else if (n === 2) {
-                if (this.loginForm.loginName) {
-                    this.showClearLoginName = true
-                } else {
-                    this.showClearLoginName = false
-                }
+              if (this.loginForm.loginName) {
+                  this.showClearLoginName = true
+              } else {
+                  this.showClearLoginName = false
+              }
             } else {
                 if (this.loginForm.loginPass) {
                     this.showClearLoginPass = true
@@ -83,15 +98,10 @@
             this.showError = false
         },
           handleBlur(n) {
-              if (n === 1) {
-                  setTimeout(()=>{
-                      this.showClearCompanyCode = false
-                  },100)
-
-              } else if (n === 2) {
-                  setTimeout(()=>{
-                      this.showClearLoginName = false
-                  },100)
+             if (n === 1) {
+                setTimeout(()=>{
+                    this.showClearLoginName = false
+                },100)
               } else {
                   setTimeout(()=>{
                       this.showClearLoginPass = false
@@ -100,12 +110,7 @@
               }
           },
         valideForm() {
-            let arr=['标识码','用户名','密码']
-            if (this.loginForm.companyCode) {
-                arr = arr.filter(item=>{
-                    return item !=='标识码'
-                })
-            }
+            let arr=['用户名','密码']
             if (this.loginForm.loginName) {
                 arr = arr.filter(item=>{
                     return item !=='用户名'
@@ -127,51 +132,66 @@
         },
         loginSubmit() {
             if (this.valideForm()) {
-              let loginInfo ={
-                loginName:this.loginForm.loginName,
-                companyCode:this.loginForm.companyCode
-              };
-              this.$store.commit('setLoginInfo',loginInfo);
-              this.$router.push({
-                name:'chatList'
+              let data = JSON.parse(JSON.stringify(this.loginForm))
+              this.$store.dispatch('post',{url:'chat/login',data:data}).then((res)=>{
+                console.log(res)
+                if (res.code === 0) {
+                  let loginInfo ={
+                    loginName:res.data.login_name,
+                    staffId:res.data.id
+                  };
+                  this.$store.commit('setLoginInfo',loginInfo);
+                  this.$router.push({
+                    name:'chatList'
+                  })
+                } else if (res.code === 3) {
+                  this.showError = true
+                  this.errorTip='用户不存在'
+                } else if (res.code === 4) {
+                  this.showError = true
+                  this.errorTip='密码不正确'
+                }
               })
             } else {
                 return false
             }
         },
-          handleChage(n) {
-              if (n === 1) {
-                  if (this.loginForm.companyCode) {
-                      this.showClearCompanyCode = true
-                  } else {
-                      this.showClearCompanyCode = false
-                  }
-              } else if (n === 2) {
-                  if (this.loginForm.loginName) {
-                      this.showClearLoginName = true
-                  } else {
-                      this.showClearLoginName = false
-                  }
-              } else {
-                  if (this.loginForm.loginPass) {
-                      this.showClearLoginPass = true
-                  } else {
-                      this.showClearLoginPass = false
-                  }
+        register() {
+          if (this.valideForm()) {
+            let data = JSON.parse(JSON.stringify(this.loginForm))
+            this.$store.dispatch('post',{url:'chat/register',data:data}).then((res)=>{
+              if (Number(res.code) === 0) {
+                this.showRegister = false
               }
-          },
-          handleClear(n) {
-            if (n === 1) {
-                this.loginForm.companyCode = ''
-                this.$refs['companyCode'].focus()
-            } else if (n === 2) {
-                this.loginForm.loginName = ''
-                this.$refs['loginName'].focus()
-            } else {
-                this.loginForm.loginPass = ''
-                this.$refs['loginPass'].focus()
-            }
+            })
+          } else {
+            return false
           }
+        },
+        handleChage(n) {
+            if (n === 1) {
+                if (this.loginForm.loginName) {
+                    this.showClearLoginName = true
+                } else {
+                    this.showClearLoginName = false
+                }
+            } else {
+                if (this.loginForm.loginPass) {
+                    this.showClearLoginPass = true
+                } else {
+                    this.showClearLoginPass = false
+                }
+            }
+        },
+        handleClear(n) {
+          if (n === 1) {
+              this.loginForm.loginName = ''
+              this.$refs['loginName'].focus()
+          } else {
+              this.loginForm.loginPass = ''
+              this.$refs['loginPass'].focus()
+          }
+        }
       }
     }
 </script>
@@ -283,6 +303,11 @@
           color: @nick-name-color;
           font-size: 1em;
         }
+      }
+      .register {
+        color: @button-primary-bg-color;
+        float: right;
+        margin-top: 1em;
       }
     }
 

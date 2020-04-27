@@ -4,14 +4,12 @@
     <div class="title">我的</div>
     <div class="mineInfo">
       <img :src="icon.mineAvatar" alt="">
-      <div>{{ newLoginInfo.userName }}</div>
-      <div>{{ newLoginInfo.loginName }}</div>
-      <div>{{ newLoginInfo.orgName }}</div>
+      <div>{{ loginInfo.loginName }}</div>
     </div>
 
   </div>
   <group>
-    <cell :title="newLoginInfo.loginName" is-link>
+    <cell :title="loginInfo.loginName" is-link>
       <img slot="icon" style="display:block;margin-right:5px;" :src="icon.mineAccount">
       <div slot @click="logoutShow">退出账号</div>
     </cell>
@@ -108,20 +106,9 @@
             logoutShow() {
                 this.showNotice = true
             },
-            getLoginInfo() { // 获取登录信息
-                let data ={
-                    companyCode: this.loginInfo.companyCode,
-                    userId: Number(this.loginInfo.userId)
-                }
-                this.$store.dispatch('post',{url:'',data}).then(res=>{
-                    if (res) {
-                        this.newLoginInfo = res
-                    }
-                });
-            }
+
         },
         mounted() {
-            this.getLoginInfo()
         }
     }
 </script>

@@ -1,4 +1,4 @@
 {
   "baseURL":"",
-  "webSocketURL":""
+  "webSocketURL":"ws://localhost:8001"
 }

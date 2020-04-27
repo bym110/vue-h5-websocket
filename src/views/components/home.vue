@@ -63,8 +63,7 @@
             {
               id:1,
               createTime:'2020-04-10 10:21:45',
-              targetType:1,
-              unread:3,
+              unread:0,
               nickName:'妮妮',
               headPic:'',
               contentType:1,
@@ -75,7 +74,6 @@
       },
       methods:{
           getChatList() {
-
             this.$store.commit('setChatList',this.data);
           },
           searchChange(e) {

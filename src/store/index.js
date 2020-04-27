@@ -69,7 +69,7 @@ const store = new Vuex.Store({
     },
     initWebSocket(state){ //初始化weosocket
      // micro_customer_service_app_object.onPrintLog('state',state)
-      const wsuri =state.webSocketUrl+"/uusafe/ucp/chat.sc?customerId="+state.loginInfo.staffId+"&companyCode="+state.loginInfo.companyCode+"&type=mobile";
+      const wsuri =state.webSocketUrl;
      // micro_customer_service_app_object.onPrintLog('url',wsuri)
       state.websocket = new WebSocket(wsuri);
      // micro_customer_service_app_object.onPrintLog('socket',state.websocket)
@@ -167,20 +167,10 @@ const store = new Vuex.Store({
   },
   actions:{
     get (state ,options) {
-      let url = 'uusafe/ucp/rest/';
-      if (options.url =='uusafe/ucp/auth/rest/authByLoginName' || options.url =="uusafe/ucp/chat/rest/queryForChatHistory" || options.url == 'uusafe/ucp/auth/rest/getUserInfoByUserId') {
-        return ajax.get(options.url,{ params: options.params});
-      }else {
-        return ajax.get(url+options.url,{ params: options.params});
-      }
+      return ajax.get(options.url,{ params: options.params});
     },
     post(state,options) {
-      let url = 'uusafe/ucp/rest/';
-      if (options.url =='uusafe/ucp/file/rest/fileUpload' || options.url =='uusafe/ucp/auth/rest/authByLoginName' || options.url =="uusafe/ucp/chat/rest/queryForChatHistory" || options.url =='uusafe/mmba/rest/ffmpeg/audioChange' || options.url =='uusafe/mmba/rest/ffmpeg/check' || options.url == 'uusafe/ucp/auth/rest/getUserInfoByUserId') {
-        return ajax.post(options.url,{},{ data: options.data})
-      }else {
-        return ajax.post(url+options.url,{},{ data: options.data})
-      }
+      return ajax.post(options.url,{},{ data: options.data})
 
     }
   },

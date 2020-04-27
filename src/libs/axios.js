@@ -65,21 +65,8 @@ ajax.interceptors.request.use((req)=>{ // 请求拦截器
 });
 ajax.interceptors.response.use((res)=>{ // 响应拦截器
     vue.$vux.loading.hide()
-  if (res.status ==200) {
-    if (res.data.data) {
-      try {
-        if (typeof res.data.data =='string') {
-          return JSON.parse(res.data.data)
-        }else {
-          return res.data.data
-        }
-      }catch (e) {
-
-      }
-
-    } else {
-      return res.data
-    }
+  if (res.status === 200) {
+    return res.data
   } else {
     vue.$vux.toast.text(' 当前网络不可用，请检查您的网络设置', 'middle');
     // setTimeout(()=>{
