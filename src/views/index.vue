@@ -44,21 +44,9 @@
 
                     }
                 }
-            },
-            // 音频解码
-            audioChange (source) {
-                let data ={
-                    source:source,
-                    type:'mp3'
-                }
-                this.$store.dispatch('post',{url:'uusafe/mmba/rest/ffmpeg/audioChange',data}).then(res=>{
-                });
             }
         },
         mounted() {
-            // console.log(this.$store, '-------------')
-            // alert(this.$store)
-            //micro_customer_service_app_object.onReload(true)
             this.$store.commit('initWebSocket');
             this.websocketOnmessage();
         }
